@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>three.js svg - lines</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<link type="text/css" rel="stylesheet" href="styles.css">
+		<style>
+			svg {
+				display: block;
+			}
+			
+			/* Set the body to fill the entire screen */
+			body, html {
+				margin: 0;
+				padding: 0;
+				height: 100%;
+				overflow: hidden;
+				position: relative;
+			}
+			
+			/* Overlay image and text */
+			#overlay {
+				position: absolute;
+				top: 20px;
+				left: 20px;
+				color: white;
+				font-size: 24px;
+				z-index: 10;
+				background: transparent; /* Ensure no background is applied */
+				padding: 0; /* Remove any padding */
+				margin: 0; /* Remove any margin */
+			}
+
+			#overlay img {
+				max-width: 200px;
+				max-height: 200px;
+				display: block;
+				margin-bottom: 5%;
+			}
+
+			/* Change the font of the text inside p */
+			#overlay p {
+				color: black;
+				font-family: 'Avenir Next', sans-serif;
+				margin-top: 10px;
+				font-size: 55px;
+				line-height: 1;
+				font-weight: 550;
+				text-align: center;
+				width: 50%;
+			}
+
+			/* Gradient style for the part of the text */
+			.gradient-text {
+				background: linear-gradient(to right, #ff00d9, #ff6f00, #fa00feef,#00aeff); 
+				-webkit-background-clip: text; /* For Safari */
+				background-clip: text;
+				color: transparent; /* Makes the text color transparent to show the gradient */
+			}
+		</style>
+	</head>
+	<body>
+		<div id="overlay">
+			<img src="panchroma.png" alt="Surface Finishes">
+			<p>EXPLORE 17 SURFACE FINISHES<span class="gradient-text"> IN MORE THAN 150 COLOR COMBINATIONS</span> </p>
+		</div>
+
+		<script type="importmap">
+			{
+			  "imports": {
+				"three": "https://cdn.jsdelivr.net/npm/three@0.149.0/build/three.module.js",
+				"three/addons/": "https://cdn.jsdelivr.net/npm/three@0.149.0/examples/jsm/"
+			  }
+			}
+		</script>
+		  
+		<script type="module" src="three.js"></script>
+	</body>
+</html>
