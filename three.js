@@ -50,6 +50,7 @@ function createGradientMaterial(startColor, endColor) {
     side: THREE.DoubleSide,
   });
 }
+
 function create3DCircularEllipse(
   xRadius,
   yRadius,
@@ -94,63 +95,70 @@ function create3DCircularEllipse(
   return mesh;
 }
 
-const ellipsesData = [
-  {
-    xRadius: 30,
-    yRadius: 50,
-    rotation: Math.PI / 5,
-    offsetX: 0,
-    offsetY: 0,
-    zOffset: 0,
-    startColor: 0xf5fe74,
-    endColor: 0xfea3bc,
-    thickness: 0.3,
-  },
-  {
-    xRadius: 30,
-    yRadius: 50,
-    rotation: 2 * (Math.PI / 5),
-    offsetX: 0,
-    offsetY: 0,
-    zOffset: 0,
-    startColor: 0xfea3bc,
-    endColor: 0xffc3b5,
-    thickness: 0.3,
-  },
-  {
-    xRadius: 30,
-    yRadius: 50,
-    rotation: 3 * (Math.PI / 5),
-    offsetX: 0,
-    offsetY: 0,
-    zOffset: 0,
-    startColor: 0xd8f77c,
-    endColor: 0xe0b5ff,
-    thickness: 0.3,
-  },
-  {
-    xRadius: 30,
-    yRadius: 50,
-    rotation: 4 * (Math.PI / 5),
-    offsetX: 0,
-    offsetY: 0,
-    zOffset: 0,
-    startColor: 0xbfade8,
-    endColor: 0xa2c7e2,
-    thickness: 0.3,
-  },
-  {
-    xRadius: 30,
-    yRadius: 50,
-    rotation: 5 * (Math.PI / 5),
-    offsetX: 0,
-    offsetY: 0,
-    zOffset: 0,
-    startColor: 0xa2c7e2,
-    endColor: 0xc3fbd0,
-    thickness: 0.3,
-  },
-];
+function getAdjustedEllipseData() {
+  const isMobile = window.innerWidth < 768; // Adjust based on mobile breakpoint
+  const scaleFactor = isMobile ? 0.5 : 1; // Make ellipses smaller on mobile
+
+  return [
+    {
+      xRadius: 30 * scaleFactor,
+      yRadius: 50 * scaleFactor,
+      rotation: Math.PI / 5,
+      offsetX: 0,
+      offsetY: 0,
+      zOffset: 0,
+      startColor: 0xf5fe74,
+      endColor: 0xfea3bc,
+      thickness: 0.3,
+    },
+    {
+      xRadius: 30 * scaleFactor,
+      yRadius: 50 * scaleFactor,
+      rotation: 2 * (Math.PI / 5),
+      offsetX: 0,
+      offsetY: 0,
+      zOffset: 0,
+      startColor: 0xfea3bc,
+      endColor: 0xffc3b5,
+      thickness: 0.3,
+    },
+    {
+      xRadius: 30 * scaleFactor,
+      yRadius: 50 * scaleFactor,
+      rotation: 3 * (Math.PI / 5),
+      offsetX: 0,
+      offsetY: 0,
+      zOffset: 0,
+      startColor: 0xd8f77c,
+      endColor: 0xe0b5ff,
+      thickness: 0.3,
+    },
+    {
+      xRadius: 30 * scaleFactor,
+      yRadius: 50 * scaleFactor,
+      rotation: 4 * (Math.PI / 5),
+      offsetX: 0,
+      offsetY: 0,
+      zOffset: 0,
+      startColor: 0xbfade8,
+      endColor: 0xa2c7e2,
+      thickness: 0.3,
+    },
+    {
+      xRadius: 30 * scaleFactor,
+      yRadius: 50 * scaleFactor,
+      rotation: 5 * (Math.PI / 5),
+      offsetX: 0,
+      offsetY: 0,
+      zOffset: 0,
+      startColor: 0xa2c7e2,
+      endColor: 0xc3fbd0,
+      thickness: 0.3,
+    },
+  ];
+}
+
+const ellipsesData = getAdjustedEllipseData();
 
 const ellipses = ellipsesData.map((ellipseData) => {
   const ellipse = create3DCircularEllipse(
