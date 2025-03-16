@@ -97,7 +97,7 @@ function create3DCircularEllipse(
 
 function getAdjustedEllipseData() {
   const isMobile = window.innerWidth < 768; // Adjust based on mobile breakpoint
-  const scaleFactor = isMobile ? 0.65 : 1; // Make ellipses smaller on mobile
+  const scaleFactor = isMobile ? 0.75 : 1; // Make ellipses smaller on mobile
 
   return [
     {
