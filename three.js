@@ -190,13 +190,23 @@ let resetSpeed = 0.008; // Speed at which the rotation returns to initial state
 let inactivityDelay = 300; // Delay before starting to reset after inactivity
 let delayDuration = 5000; // Time to keep movement even after mouse stops
 let motionStartTime = 0; // Time when the mouse stopped moving
-
-document.addEventListener("mousemove", (event) => {
-  mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-  mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+function updateMousePosition(x, y) {
+  mouseX = (x / window.innerWidth) * 2 - 1;
+  mouseY = -(y / window.innerHeight) * 2 + 1;
   lastMouseMoveTime = Date.now();
   motionStartTime = Date.now();
   mouseMoved = true;
+}
+
+// Desktop: Mouse move
+document.addEventListener("mousemove", (event) => {
+  updateMousePosition(event.clientX, event.clientY);
+});
+
+// Mobile: Touch move (swiping)
+document.addEventListener("touchmove", (event) => {
+  const touch = event.touches[0]; // First touch point
+  updateMousePosition(touch.clientX, touch.clientY);
 });
 
 function animate() {
@@ -226,4 +236,3 @@ function animate() {
   renderer.render(scene, camera);
 }
 animate();
-
